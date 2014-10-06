@@ -180,27 +180,33 @@
             // 
             // pnlTorre2
             // 
+            this.pnlTorre2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlTorre2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTorre2.Location = new System.Drawing.Point(274, 0);
             this.pnlTorre2.Name = "pnlTorre2";
             this.pnlTorre2.Size = new System.Drawing.Size(274, 382);
             this.pnlTorre2.TabIndex = 2;
+            this.pnlTorre2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlTorre2_MouseUp);
             // 
             // pnlTorre3
             // 
+            this.pnlTorre3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlTorre3.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlTorre3.Location = new System.Drawing.Point(548, 0);
             this.pnlTorre3.Name = "pnlTorre3";
             this.pnlTorre3.Size = new System.Drawing.Size(274, 382);
             this.pnlTorre3.TabIndex = 1;
+            this.pnlTorre3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlTorre3_MouseUp);
             // 
             // pnlTorre1
             // 
+            this.pnlTorre1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlTorre1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlTorre1.Location = new System.Drawing.Point(0, 0);
             this.pnlTorre1.Name = "pnlTorre1";
             this.pnlTorre1.Size = new System.Drawing.Size(274, 382);
             this.pnlTorre1.TabIndex = 0;
+            this.pnlTorre1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlTorre1_MouseUp);
             // 
             // timer
             // 
@@ -222,6 +228,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.pnlPlaneacion.ResumeLayout(false);
             this.pnlPlaneacion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrDiscos)).EndInit();
