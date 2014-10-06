@@ -36,12 +36,17 @@ namespace TorresHanoi
         private Size sizeTower;
         private Size sizeDisco;
         private int xLocation;
+        byte[] imgCopiar;//Almacenar datos de la imagen
+        Point puntoActual;
+        private PictureBox imgTemporal;
+        private Point puntoImagen;
         #endregion
         private void Form1_Load(object sender, EventArgs e)
         {
             startSound = new SoundPlayer("sonidos/watch_the_game.wav");
             startSound.Play();
             FormaBoton();
+            //GeneraColumnas();
         }
         private void FormaBoton()
         {
@@ -53,6 +58,7 @@ namespace TorresHanoi
             pnlTorre1.Controls.Clear();
             pnlTorre2.Controls.Clear();
             pnlTorre3.Controls.Clear();
+           //GeneraColumnas();
             startSound.Stop();
             playingSound = new SoundPlayer("sonidos/tetrisB.wav");
             playingSound.Play();
@@ -92,7 +98,7 @@ namespace TorresHanoi
             catch (Exception ex)
             { MessageBox.Show(ex.Message); }
         }
-
+ 
         private void GenerarDiscos()
         {
             sizeTower = new Size(pnlTorre1.Width, pnlTorre1.Height);
@@ -112,23 +118,14 @@ namespace TorresHanoi
                     anchoPanel = anchoPanel - 7*2;
                     pnlTorre1.Controls.Add(creaDiscoLleno(puntos[i-1], new Size(anchoPanel,20)));
                 }
-              LLenarPanelesVacio();
+                int xV = pnlTorre2.Width - 7;
+                int yV = pnlTorre2.Height - 20;
+                pnlTorre2.Controls.Add(creaDiscoVacio(new Size(pnlTorre2.Width - 14, 20), new Point(7, yV)));
+                pnlTorre3.Controls.Add(creaDiscoVacio(new Size(pnlTorre2.Width - 14, 20), new Point(7, yV)));
+                //LLenarPanelesVacio();
             }
         }
 
-        private void LLenarPanelesVacio()
-        {
-              int discos = int.Parse(nmrDiscos.Text);
-                Point[] puntos=GeneraPuntos(discos);
-                int anchoPanel = sizeTower.Width;
-              //Discos de segunda y tercera columna
-                for (int i = 1; i <= discos; i++)
-                {
-                    anchoPanel = anchoPanel - 7 * 2;
-                    pnlTorre2.Controls.Add(creaDiscoVacio(puntos[i - 1], new Size(anchoPanel, 20)));
-                    pnlTorre3.Controls.Add(creaDiscoVacio(puntos[i - 1], new Size(anchoPanel, 20)));
-                }
-        }
         private Point[] GeneraPuntos(int discos)
         {
             Point[] puntos=new Point[discos];
@@ -140,13 +137,13 @@ namespace TorresHanoi
             }
             return puntos;
         }
-        PictureBox creaDiscoVacio(Point punto, Size tam)
+        PictureBox creaDiscoVacio(Size size, Point punto)
         {
             PictureBox pb = new PictureBox();
             pb.Location = punto;
-            pb.Width = tam.Width;
-            pb.Height = tam.Height;
-            pb.BorderStyle = BorderStyle.FixedSingle;
+            pb.Width = size.Width;
+            pb.Height = size.Height;
+            pb.BorderStyle = BorderStyle.None;
             pb.SizeMode = PictureBoxSizeMode.StretchImage;
             pb.MouseUp += imgDestino_MouseUp;
             pb.MouseDown += imgDestino_MouseDown;
@@ -160,45 +157,41 @@ namespace TorresHanoi
             pb.Location = punto;
             pb.Width = tam.Width;
             pb.Height = tam.Height;
-            pb.BorderStyle = BorderStyle.Fixed3D;
+            pb.BorderStyle = BorderStyle.None;
             pb.SizeMode = PictureBoxSizeMode.StretchImage;
             pb.Image = Image.FromFile("imagenes/lightwood.jpg");
             pb.MouseUp += imgDestino_MouseUp;
             pb.MouseDown += imgDestino_MouseDown;
             pb.MouseHover += imgr_MouseHover;
             pb.MouseMove += imgDestino_MouseMove;
+            pb.BringToFront();
             return pb;
         }
-        PictureBox creaDiscoNuevo(Point punto, Size tam, Bitmap image)
-        {
-            PictureBox pb = new PictureBox();
-            pb.Location = punto;
-            pb.Width = tam.Width;
-            pb.Height = tam.Height;
-            pb.BorderStyle = BorderStyle.Fixed3D;
-            pb.SizeMode = PictureBoxSizeMode.StretchImage;
-            pb.Image = Image.FromFile("imagenes/lightwood.jpg");
-            pb.MouseUp += imgDestino_MouseUp;
-            pb.MouseDown += imgDestino_MouseDown;
-            pb.MouseHover += imgr_MouseHover;
-            pb.MouseMove += imgDestino_MouseMove;
-            return pb;
-        }
+        #region IMAGEN EN MOVIMIENTO
         public Byte[] ConvertirImagen(Image imagen)
         {
             byte[] resultado = null;
-            //Objeto para realizar el respaldo de la imagen memoria
-            MemoryStream memoria = new MemoryStream();
-            //Almacena en memoria la imagen en el formato original
-            //Formato de la imagen puede ser :Raw Format, ImageFormat
-            //1.- imagen.Save(memoria, imagen.RawFormat);
-            imagen.Save(memoria, ImageFormat.Png);
-            //Obtener los datos en bytes de la imagen 
-            resultado = memoria.GetBuffer();
-            memoria.Close();
+            try
+            {
+                
+                //Objeto para realizar el respaldo de la imagen memoria
+                MemoryStream memoria = new MemoryStream();
+                //Almacena en memoria la imagen en el formato original
+                //Formato de la imagen puede ser :Raw Format, ImageFormat
+                //1.- imagen.Save(memoria, imagen.RawFormat);
+                imagen.Save(memoria, ImageFormat.Png);
+                //Obtener los datos en bytes de la imagen 
+                resultado = memoria.GetBuffer();
+                memoria.Close();
+                
+            }
+            catch
+            {
+
+            }
             return resultado;
         }
-              public Image ObtenerImagen(Byte[] imgDatos)
+        public Image ObtenerImagen(Byte[] imgDatos)
         {
             Image imgGeneral = null;
             MemoryStream memoria = new MemoryStream();
@@ -206,25 +199,23 @@ namespace TorresHanoi
             imgGeneral = Image.FromStream(memoria);
             return imgGeneral;
         }
-        
-        byte[] imgCopiar;//Almacenar datos de la imagen
-        Point puntoActual;
-        private PictureBox imgTemporal;
+        #endregion
+
         #region ACCIONES DE DISCO
         private void imgDestino_MouseDown(object sender, MouseEventArgs e)
         {
-            PictureBox imagen = (PictureBox)sender;//Imagen del objeto
+            //PictureBox imagen = (PictureBox)sender;//Imagen del objeto
    
-            Point punto = new Point(e.X, e.Y);//Punto donde se dio click
-            Size tam = imagen.ClientRectangle.Size;//Tamaño de img
-            puntoActual = imagen.Location;//Localizacion de imagen
-            imgCopiar = ConvertirImagen(imagen.Image);//Copia en bytes de la imagen a mover o copiar
+            //Point punto = new Point(e.X, e.Y);//Punto donde se dio click
+            //Size tam = imagen.ClientRectangle.Size;//Tamaño de img
+            //puntoActual = imagen.Location;//Localizacion de imagen
+            //imgCopiar = ConvertirImagen(imagen.Image);//Copia en bytes de la imagen a mover o copiar
 
-            //Creando nueva imagen
-            imgTemporal = creaDiscoNuevo(puntoActual, tam, (Bitmap)imagen.Image);
-            this.Controls.Add(imgTemporal);
-            imagen.Location = new Point(puntoActual.X + punto.X, puntoActual.Y + punto.Y);
-            imagen.BringToFront();
+            ////Creando nueva imagen
+            //imgTemporal = creaDiscoLleno(puntoActual, tam);
+            //this.Controls.Add(imgTemporal);
+            //imagen.Location = new Point(puntoActual.X + punto.X, puntoActual.Y + punto.Y);
+            //imagen.BringToFront();
         }
 
         private void imgDestino_MouseMove(object sender, MouseEventArgs e)
@@ -240,8 +231,10 @@ namespace TorresHanoi
         {
             imgTemporal = null;
             PictureBox imagen = (PictureBox)sender;
-            imagen.Location = puntoActual;
+            puntoImagen = imagen.Location;
+            imagen.Location = new Point(7, puntoActual.Y);
             imagen.Image = null;
+            imagen.Size=new Size(pnlTorre1.Width-14, 20);
             sizeDisco=new Size(imagen.Width, imagen.Height);
         }
 
@@ -253,6 +246,7 @@ namespace TorresHanoi
                 imagen.Image = ObtenerImagen(imgCopiar);
                 imagen.Height = sizeDisco.Height;
                 imagen.Width = sizeDisco.Width;
+                //imagen.Location = puntoImagen;
                 imagen.SizeMode = PictureBoxSizeMode.StretchImage;
                 imgCopiar = null;
                 imgTemporal = null;

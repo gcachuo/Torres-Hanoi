@@ -66,7 +66,7 @@
             // 
             // nmrDiscos
             // 
-            this.nmrDiscos.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nmrDiscos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nmrDiscos.Location = new System.Drawing.Point(461, 22);
             this.nmrDiscos.Maximum = new decimal(new int[] {
             18,
@@ -79,7 +79,7 @@
             0,
             0});
             this.nmrDiscos.Name = "nmrDiscos";
-            this.nmrDiscos.Size = new System.Drawing.Size(120, 31);
+            this.nmrDiscos.Size = new System.Drawing.Size(120, 29);
             this.nmrDiscos.TabIndex = 4;
             this.nmrDiscos.Value = new decimal(new int[] {
             3,
@@ -90,30 +90,30 @@
             // lblDiscos
             // 
             this.lblDiscos.AutoSize = true;
-            this.lblDiscos.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiscos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscos.ForeColor = System.Drawing.Color.White;
             this.lblDiscos.Location = new System.Drawing.Point(382, 28);
             this.lblDiscos.Name = "lblDiscos";
-            this.lblDiscos.Size = new System.Drawing.Size(73, 23);
+            this.lblDiscos.Size = new System.Drawing.Size(78, 24);
             this.lblDiscos.TabIndex = 3;
             this.lblDiscos.Text = "Discos:";
             // 
             // txtJugador
             // 
-            this.txtJugador.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtJugador.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtJugador.Location = new System.Drawing.Point(130, 20);
             this.txtJugador.Name = "txtJugador";
-            this.txtJugador.Size = new System.Drawing.Size(188, 31);
+            this.txtJugador.Size = new System.Drawing.Size(188, 29);
             this.txtJugador.TabIndex = 2;
             // 
             // lblJugador
             // 
             this.lblJugador.AutoSize = true;
-            this.lblJugador.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJugador.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblJugador.ForeColor = System.Drawing.Color.White;
             this.lblJugador.Location = new System.Drawing.Point(32, 22);
             this.lblJugador.Name = "lblJugador";
-            this.lblJugador.Size = new System.Drawing.Size(92, 23);
+            this.lblJugador.Size = new System.Drawing.Size(92, 24);
             this.lblJugador.TabIndex = 1;
             this.lblJugador.Text = "Jugador:";
             // 
@@ -145,11 +145,11 @@
             this.lblTiempo.AutoSize = true;
             this.lblTiempo.BackColor = System.Drawing.Color.Transparent;
             this.lblTiempo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblTiempo.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTiempo.ForeColor = System.Drawing.Color.White;
-            this.lblTiempo.Location = new System.Drawing.Point(720, 0);
+            this.lblTiempo.Location = new System.Drawing.Point(711, 0);
             this.lblTiempo.Name = "lblTiempo";
-            this.lblTiempo.Size = new System.Drawing.Size(102, 25);
+            this.lblTiempo.Size = new System.Drawing.Size(111, 25);
             this.lblTiempo.TabIndex = 1;
             this.lblTiempo.Text = " 00:00:00";
             // 
@@ -158,11 +158,11 @@
             this.lblMovimientos.AutoSize = true;
             this.lblMovimientos.BackColor = System.Drawing.Color.Transparent;
             this.lblMovimientos.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblMovimientos.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMovimientos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMovimientos.ForeColor = System.Drawing.Color.White;
             this.lblMovimientos.Location = new System.Drawing.Point(0, 0);
             this.lblMovimientos.Name = "lblMovimientos";
-            this.lblMovimientos.Size = new System.Drawing.Size(215, 25);
+            this.lblMovimientos.Size = new System.Drawing.Size(224, 25);
             this.lblMovimientos.TabIndex = 0;
             this.lblMovimientos.Text = "Movimientos: 0 de 0";
             // 
@@ -180,7 +180,6 @@
             // 
             // pnlTorre2
             // 
-            this.pnlTorre2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlTorre2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTorre2.Location = new System.Drawing.Point(274, 0);
             this.pnlTorre2.Name = "pnlTorre2";
@@ -189,7 +188,6 @@
             // 
             // pnlTorre3
             // 
-            this.pnlTorre3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlTorre3.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlTorre3.Location = new System.Drawing.Point(548, 0);
             this.pnlTorre3.Name = "pnlTorre3";
@@ -198,7 +196,6 @@
             // 
             // pnlTorre1
             // 
-            this.pnlTorre1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlTorre1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlTorre1.Location = new System.Drawing.Point(0, 0);
             this.pnlTorre1.Name = "pnlTorre1";
