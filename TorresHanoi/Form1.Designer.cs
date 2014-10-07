@@ -186,6 +186,7 @@
             this.pnlTorre2.Name = "pnlTorre2";
             this.pnlTorre2.Size = new System.Drawing.Size(274, 382);
             this.pnlTorre2.TabIndex = 2;
+            this.pnlTorre2.MouseHover += new System.EventHandler(this.pnlTorre2_MouseHover);
             this.pnlTorre2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlTorre2_MouseUp);
             // 
             // pnlTorre3
@@ -196,6 +197,7 @@
             this.pnlTorre3.Name = "pnlTorre3";
             this.pnlTorre3.Size = new System.Drawing.Size(274, 382);
             this.pnlTorre3.TabIndex = 1;
+            this.pnlTorre3.MouseHover += new System.EventHandler(this.pnlTorre3_MouseHover);
             this.pnlTorre3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlTorre3_MouseUp);
             // 
             // pnlTorre1

@@ -203,12 +203,12 @@ namespace TorresHanoi
         }
         #endregion
 
+        private Panel pnl;
         #region ACCIONES DE DISCO
         private void imgDestino_MouseDown(object sender, MouseEventArgs e)
         {
             PictureBox imagen = (PictureBox)sender;//Imagen del objeto
-
-            Point punto = new Point(e.X, e.Y);//Punto donde se dio click
+            Point punto = new Point(e.X-(imagen.Width/2), e.Y-(imagen.Height/2));//Punto donde se dio click
             Size tam = imagen.ClientRectangle.Size;//Tamaño de img
             puntoActual = imagen.Location;//Localizacion de imagen
             imgCopiar = ConvertirImagen(imagen.Image);//Copia en bytes de la imagen a mover o copiar
@@ -225,19 +225,21 @@ namespace TorresHanoi
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
                 PictureBox imagen = (PictureBox)sender;
-                imagen.Location = new Point(imagen.Location.X + e.X, imagen.Location.Y + e.Y);
+                imagen.Location = new Point(imagen.Location.X + e.X - (imagen.Width / 2), imagen.Location.Y + e.Y-(imagen.Height / 2));
             }
         }
 
+        private PictureBox temporal;
         private void imgDestino_MouseUp(object sender, MouseEventArgs e)
         {
             imgTemporal = null;
             PictureBox imagen = (PictureBox)sender;
             puntoImagen = imagen.Location;
-            imagen.Location = new Point(7, puntoActual.Y);
+            imagen.Location = new Point(puntoActual.X, puntoActual.Y);
             //  imagen.Size=new Size(pnlTorre1.Width-14, 20);
             sizeDisco = imagen.Size;
             // imagen.Image = null;
+            temporal = imagen;
         }
 
         //private void imgr_MouseHover(object sender, EventArgs e)
@@ -263,7 +265,7 @@ namespace TorresHanoi
 
         private void pnlTorre2_MouseUp(object sender, MouseEventArgs e)
         {
-
+            
         }
 
         private void pnlTorre3_MouseUp(object sender, MouseEventArgs e)
@@ -280,6 +282,45 @@ namespace TorresHanoi
                 PictureBox imagen = (PictureBox)sender;
                 imagen.Location = new Point(imagen.Location.X + e.X, imagen.Location.Y + e.Y);
             }
+        }
+
+        public void Mover(Panel panelTo, Panel panelFrom)
+        {
+            try
+            {
+                PictureBox imagen;
+                imgTemporal = null;
+                imagen = temporal;
+
+                puntoImagen = imagen.Location;
+                imagen.Location = new Point(puntoActual.X, puntoActual.Y);
+                //  imagen.Size=new Size(pnlTorre1.Width-14, 20);
+                sizeDisco = imagen.Size;
+                panelTo.Controls.Add(creaDiscoLleno(new Point(puntoActual.X, puntoActual.Y), new Size(imagen.Width, imagen.Height)));
+                panelFrom.Controls.Remove(imagen);
+                // imagen.Image = null;
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+        private void pnlTorre2_MouseHover(object sender, EventArgs e)
+        {
+           
+          Mover(pnlTorre2,pnl);
+            
+        }
+
+        private void groupBox1_MouseHover(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void pnlTorre3_MouseHover(object sender, EventArgs e)
+        {
+
         }
 
     }
